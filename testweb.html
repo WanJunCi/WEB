@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPrime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #f3f4f6;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+        .hero {
+            background-image: url("");
+            padding: 5rem 2rem;
+            text-align: center;
+}
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fdfdfd;
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        .hero {
+            background-image: url("bg.jpg");
+            background-repeat: no-repeat;      
+            background-position: center;       
+            background-size: cover;            
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        .courses {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-img {
+            height: 180px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .course-info {
+            padding: 1.5rem;
+        }
+
+        .course-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .course-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform: translateY(-20px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .modal-container .btn {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+        }
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">EduPrime</a>
+            <ul class="nav-links">
+                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="#courses">Khóa Học</a></li>
+                <li><a href="#">Giảng Viên</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+                <li><button class="btn" id="openLoginBtn">Đăng Nhập</button></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            
+            <a href="#courses" class="btn">Khám Phá Ngay</a>
+        </div>
+    </section>
+    <section class="courses" id="courses">
+        <h2 class="section-title">Khóa Học</h2>
+        <div class="course-grid">
+            <div class="course-card">
+                <div class="course-img">Lập Trình Web</div>
+                <div class="course-info">
+                    <h3>Full-Stack Web Developer</h3>
+                    <p>Học lập trình từ nền tảng đến nâng cao với HTML, CSS, JavaScript và Node.js.</p>
+                    <a href="#" class="btn">Xem Chi Tiết</a>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-img">Khoa Học Dữ Liệu</div>
+                <div class="course-info">
+                    <h3>Data Science & AI</h3>
+                    <p>Làm chủ Python, phân tích dữ liệu trực quan và ứng dụng Trí tuệ Nhân tạo thực chiến.</p>
+                    <a href="#" class="btn">Xem Chi Tiết</a>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-img">Tiếng Anh Giao Tiếp</div>
+                <div class="course-info">
+                    <h3>English for Professionals</h3>
+                    <p>Tự tin giao tiếp, phỏng vấn và làm việc trong môi trường đa quốc gia.</p>
+                    <a href="#" class="btn">Xem Chi Tiết</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-container">
+            <button class="modal-close" id="closeLoginBtn">&times;</button>
+            <h2 class="modal-title">Đăng Nhập EduPrime</h2>
+            <form onsubmit="event.preventDefault(); alert('Đăng nhập thành công!');">
+                <div class="form-group">
+                    <label for="email"> Tên đăng nhập</label>
+                    <input type="text" id="email" placeholder="Nhập email hoặc số điện thoại" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" placeholder="Nhập mật khẩu" required>
+                </div>
+                <button type="submit" class="btn">Đăng Nhập</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; Lập trình bởi EduPrime - 2026</p>
+    </footer>
+    <script>
+        const openBtn = document.getElementById('openLoginBtn');
+        const closeBtn = document.getElementById('closeLoginBtn');
+        const modal = document.getElementById('loginModal');
+
+        openBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html>
